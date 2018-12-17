@@ -1,0 +1,62 @@
+#!/bin/bash
+
+### This script generates index.html, which loads all needed javascript and
+### css for the app.
+
+pwd=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+app="$pwd/.."
+
+cd $app/www/app
+
+ASSET_ROOT=""
+SEARCH_PATH=""
+source "$app/www/app/scripts/include.sh"
+
+## -----------------------------------------------------------------------------
+## generate extra
+## -----------------------------------------------------------------------------
+extra="<base href=\"app/\">"
+
+## -----------------------------------------------------------------------------
+## generate CSS links
+## -----------------------------------------------------------------------------
+css="$(
+	echo "$(all_css)" \
+		| sed 's|^|<link rel=\"stylesheet\" href=\"|' \
+		| sed 's|$|">|'
+)"
+
+## -----------------------------------------------------------------------------
+## generate JS includes
+## -----------------------------------------------------------------------------
+js=""
+js="${js}\n<script src=\"../cordova.js\"></script>"
+js="${js}$(
+	echo "$(all_js)" \
+		| sed 's|___| |g' \
+		| sed 's|^|<script src="|' \
+		| sed 's|$|"></script>|'
+)"
+js="${js}\n<script src=\"../version.js\"></script>"
+js="${js}\n<script src=\"../config.js\"></script>"
+js="${js}\n<script src=\"../config-core.js\"></script>"
+js="${js}\n<script src=\"../events.js\"></script>"
+js="${js}\n<script src=\"../cacert.js\"></script>"
+js="${js}\n<script src=\"../openssl-authority.js\"></script>"
+js="${js}\n<script src=\"../download.js\"></script>"
+js="${js}\n<script src=\"../core-adapter.js\"></script>"
+js="${js}\n<script src=\"../core-logs.js\"></script>"
+js="${js}\n<script src=\"../remember-me-adapter.js\"></script>"
+js="${js}\n<script src=\"../share-to.js\"></script>"
+
+## -----------------------------------------------------------------------------
+## put it all together
+## -----------------------------------------------------------------------------
+index="$(cat $app/www/app/views/layouts/default.html)"
+index="$(do_replace "$index" '{{extra}}' "$extra")"
+index="$(do_replace "$index" '{{gencss}}' "$css")"
+index="$(do_replace "$index" '{{genjs}}' "$js")"
+
+# send our generated data into their restecpive files
+echo -ne "$index" > $app/www/index.html
+

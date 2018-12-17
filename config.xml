@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget android-versionCode="7250" id="com.lyonbros.turtl" version="0.7.2.5" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Turtl</name>
+    <description>
+		A privacy-focused note-taking application.
+    </description>
+    <author email="andrew@turtlapp.com" href="https://turtlapp.com">
+		Andrew Lyon
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <platform name="android">
+        <allow-intent href="market:*" />
+        <preference name="android-minSdkVersion" value="23" />
+        <preference name="android-targetSdkVersion" value="26" />
+        <icon src="www/app/images/favicon.128.png" />
+        <config-file parent="/manifest/application/activity" target="AndroidManifest.xml">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="*/*" />
+            </intent-filter>
+        </config-file>
+    </platform>
+    <plugin name="cordova-plugin-whitelist" spec="1" />
+    <plugin name="com.lyonbros.turtlcore" spec="bundle/cordova-plugin-turtl-core/" />
+    <plugin name="cordova-plugin-file" spec="^6.0.1" />
+    <engine name="ios" spec="~4.5.5" />
+</widget>
