@@ -18,17 +18,16 @@ alljs = $(shell echo "../js/main.js" \
 			&& find ../js/{config,controllers,handlers,lib,models} -name "*.js" \
 			| grep -v '(ignore|\.thread\.)')
 
-ANDROID_UNSIGNED = platforms/android/build/outputs/apk/android-armv7-release-unsigned.apk
-ANDROID_SIGNED = platforms/android/build/outputs/apk/android-armv7-release.apk
-ANDROID_NATIVE = $(shell find native/ -type f -name "*so" | sed 's|native/|platforms/android/libs/|')
+IOS_NATIVE = $(shell find native/ -type f -name "*.a" | sed 's|native/|platforms/ios/Turtl/Plugins/com.lyonbros.turtlcore/|')
 
 all: www/index.html
 
-platforms/android/libs/%/libturtl_core.so: native/%/libturtl_core.so
+platforms/ios/libs/%/libturtl_core.so: native/%/libturtl_core.so
+platforms/ios/Turtl/Plugins/com.lyonbros.turtlcore/%.a: native/%.a
 	$(mkdir)
 	cp $^ $@
 
-run: all $(ANDROID_NATIVE) www/cacert.js
+run: all $(IOS_NATIVE) www/cacert.js
 	./scripts/cordova.sh run android
 
 platforms/android/release-signing.properties: scripts/release-signing.properties.tpl
