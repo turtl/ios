@@ -18,7 +18,7 @@ alljs = $(shell echo "../js/main.js" \
 			&& find ../js/{config,controllers,handlers,lib,models} -name "*.js" \
 			| grep -v '(ignore|\.thread\.)')
 
-IOS_NATIVE = $(shell find native/ -type f -name "*.a" | sed 's|native/|platforms/ios/Turtl/Plugins/com.lyonbros.turtlcore/|')
+IOS_NATIVE = $(shell find native/ -type f -name "*.a" | sed 's|native/|platforms/ios/Turtl/Plugins/com.lyonbros.turtlcore|')
 
 all: www/index.html
 
