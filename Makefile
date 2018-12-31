@@ -28,24 +28,18 @@ platforms/ios/Turtl/Plugins/com.lyonbros.turtlcore/%.a: native/%.a
 	cp $^ $@
 
 run: all $(IOS_NATIVE) www/cacert.js
-	./scripts/cordova.sh run android
-
-platforms/android/release-signing.properties: scripts/release-signing.properties.tpl
-	cat $< \
-		| sed "s|{{ANDROID_SIGN_KEYSTORE}}|$(ANDROID_SIGN_KEYSTORE)|g" \
-		| sed "s|{{ANDROID_SIGN_ALIAS}}|$(ANDROID_SIGN_ALIAS)|g" \
-		> $@
+	./scripts/cordova.sh run ios
 
 release: BUILDFLAGS += --release
-release: platforms/android/release-signing.properties config-release build config-restore
+release: config-release build config-restore
 
 build: compile
 
 compile: prepare
-	./scripts/cordova.sh compile android $(BUILDFLAGS)
+	./scripts/cordova.sh compile ios $(BUILDFLAGS)
 
-prepare: all $(ANDROID_NATIVE) www/cacert.js
-	./scripts/cordova.sh prepare android $(BUILDFLAGS)
+prepare: all $(IOS_NATIVE) www/cacert.js
+	./scripts/cordova.sh prepare ios $(BUILDFLAGS)
 
 www/cacert.js: scripts/cacert.pem
 	@echo "- $@: $^"
@@ -108,7 +102,7 @@ urn:
 clean:
 	rm -rf www/app www/config-core.js www/index.html www/version.js www/cacert.js
 	rm -rf $(BUILD)
-	rm -rf platforms/android/build platforms/android/CordovaLib/build
+	rm -rf platforms/ios/build platforms/ios/CordovaLib/build
 	rm -f www/index.html
 
 clean-native:
