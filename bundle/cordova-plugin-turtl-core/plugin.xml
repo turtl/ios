@@ -12,20 +12,16 @@
 		<clobbers target="TurtlCore" />
 	</js-module>
 
-	<platform name="android">
-		<config-file target="res/xml/config.xml" parent="/*">
+	<platform name="ios">
+		<config-file target="config.xml" parent="/*">
 			<feature name="TurtlCorePlugin">
-				<param name="android-package" value="com.lyonbros.turtlcore.TurtlCorePlugin" />
-				<param name="onload" value="true" />
+				<params name="ios-package" value="TurtlCore" />
 			</feature>
 		</config-file>
-
-		<config-file target="AndroidManifest.xml" parent="/*">
-			<uses-permission android:name="android.permission.INTERNET" />
-		</config-file>
-
-		<source-file src="src/android/com/lyonbros/turtlcore/TurtlCorePlugin.java" target-dir="src/com/lyonbros/turtlcore/" />
-		<source-file src="src/android/com/lyonbros/turtlcore/TurtlCoreNative.java" target-dir="src/com/lyonbros/turtlcore/" />
+		<header-file src="src/ios/include/turtl_core.h" target-dir="TurtlCore" />
+		<source-file src="src/ios/TurtlCorePlugin.h" target-dir="TurtlCore" />
+		<source-file src="src/ios/TurtlCorePlugin.m" target-dir="TurtlCore" />
+		<source-file src="src/ios/native/libturtl_core.a" framework="true" />
 	</platform>
 </plugin>
 
