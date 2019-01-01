@@ -141,9 +141,12 @@
 - (void) lasterr:(CDVInvokedUrlCommand*)command {
 	CDVPluginResult* result = nil;
 	char* msg = turtlc_lasterr();
-	NSString* msg_str = [[NSString alloc] initWithUTF8String:msg];
+	NSString* msg_str = @"";
+	if(msg != nil) {
+		msg_str = [[NSString alloc] initWithUTF8String:msg];
+		turtlc_free_err(msg);
+	}
 	result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:msg_str];
-	turtlc_free_err(msg);
 	[self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
 }
 
