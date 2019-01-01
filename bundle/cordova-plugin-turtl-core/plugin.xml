@@ -19,7 +19,7 @@
 				<param name="onload" value="true" />
 			</feature>
 		</config-file>
-		<header-file src="src/ios/include/turtl_core.h" />
+		<header-file src="src/ios/turtl_core.h" />
 		<header-file src="src/ios/TurtlCore.h" />
 		<source-file src="src/ios/TurtlCore.m" />
 		<source-file src="src/ios/native/libturtl_core.a" framework="true" />
