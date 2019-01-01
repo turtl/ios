@@ -111,7 +111,7 @@ var load_tries = 0;
 var core_poller = setInterval(function() {
 	load_tries++;
 	if(load_tries > 300) {
-		new LoadErrorController({error: new Error('The core library isn\'t loading properly.\nThis requires inspection of the Android logs.')});
+		new LoadErrorController({error: new Error('The core library isn\'t loading properly.\nThis requires inspection of the iOS logs.')});
 		clearInterval(core_poller);
 		return;
 	}

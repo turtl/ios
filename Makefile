@@ -27,8 +27,8 @@ platforms/ios/Turtl/Plugins/com.lyonbros.turtlcore/%.a: native/%.a
 	$(mkdir)
 	cp $^ $@
 
-run: all $(IOS_NATIVE)
-	./scripts/cordova.sh run ios
+run: all $(IOS_NATIVE) www/cacert.js
+	./scripts/cordova.sh run ios $(RUNOPTS)
 
 release: BUILDFLAGS += --release
 release: config-release build config-restore
@@ -38,8 +38,14 @@ build: compile
 compile: prepare
 	./scripts/cordova.sh compile ios $(BUILDFLAGS)
 
-prepare: all $(IOS_NATIVE)
+prepare: all $(IOS_NATIVE) www/cacert.js
 	./scripts/cordova.sh prepare ios $(BUILDFLAGS)
+
+www/cacert.js: scripts/cacert.pem
+	@echo "- $@: $^"
+	@echo "var turtl_core_openssl_pem = [" > $@
+	@cat $^ | sed 's|^|"|g' | sed 's|$$|",|g' >> $@
+	@echo "].join('\n');" >> $@
 
 config-release: all
 	@mkdir -p $(BUILD)
@@ -79,7 +85,7 @@ www/index.html: www/app/index.html ./scripts/gen-index www/version.js www/config
 	@./scripts/gen-index
 
 refresh-core-plugin:
-	cordova plugin remove com.lyonbros.turtlcore
+	cordova plugin remove com.lyonbros.turtlcore --force
 	cordova plugin add bundle/cordova-plugin-turtl-core/
 
 refresh-store-plugin:
@@ -94,7 +100,7 @@ urn:
 	@echo "Is there a Ralphs around here?"
 
 clean:
-	rm -rf www/app www/config-core.js www/index.html www/version.js
+	rm -rf www/app www/config-core.js www/index.html www/version.js www/cacert.js
 	rm -rf $(BUILD)
 	rm -rf platforms/ios/build platforms/ios/CordovaLib/build
 	rm -f www/index.html

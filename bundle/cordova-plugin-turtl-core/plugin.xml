@@ -16,11 +16,12 @@
 		<config-file target="config.xml" parent="/*">
 			<feature name="TurtlCorePlugin">
 				<params name="ios-package" value="TurtlCore" />
+				<param name="onload" value="true" />
 			</feature>
 		</config-file>
-		<header-file src="src/ios/include/turtl_core.h" target-dir="TurtlCore" />
-		<source-file src="src/ios/TurtlCorePlugin.h" target-dir="TurtlCore" />
-		<source-file src="src/ios/TurtlCorePlugin.m" target-dir="TurtlCore" />
+		<header-file src="src/ios/include/turtl_core.h" />
+		<header-file src="src/ios/TurtlCore.h" />
+		<source-file src="src/ios/TurtlCore.m" />
 		<source-file src="src/ios/native/libturtl_core.a" framework="true" />
 	</platform>
 </plugin>
