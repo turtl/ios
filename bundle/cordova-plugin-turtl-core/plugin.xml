@@ -14,7 +14,7 @@
 
 	<platform name="ios">
 		<config-file target="config.xml" parent="/*">
-			<feature name="TurtlCorePlugin">
+			<feature name="TurtlCore">
 				<params name="ios-package" value="TurtlCore" />
 				<param name="onload" value="true" />
 			</feature>
