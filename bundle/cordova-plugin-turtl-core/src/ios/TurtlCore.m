@@ -20,7 +20,11 @@
 
 - (void) start:(CDVInvokedUrlCommand*)command {
 	CDVPluginResult* result = nil;
-	NSString* config = [command.arguments objectAtIndex:0];
+	if(command.arguments.count == 0) {
+		NSString* config = @"{}";
+	} else {
+		NSString* config = [command.arguments objectAtIndex:0];
+	}
 	const char* config_c = [config cStringUsingEncoding:NSUTF8StringEncoding];
 	int32_t res = turtlc_start(config_c, 1);
 	if(res == 0) {
@@ -34,7 +38,11 @@
 
 - (void) send:(CDVInvokedUrlCommand*)command {
 	CDVPluginResult* result = nil;
-	NSString* msg = [command.arguments objectAtIndex:0];
+	if(command.arguments.count == 0) {
+		NSString* msg = @"";
+	} else {
+		NSString* msg = [command.arguments objectAtIndex:0];
+	}
 	NSData* bdata = [msg dataUsingEncoding:NSUTF8StringEncoding];
 	size_t bytes_len = [bdata length];
 	uint8_t* bytes_c = [bdata bytes]; 
@@ -50,6 +58,11 @@
 
 - (void) recv:(CDVInvokedUrlCommand*)command {
 	CDVPluginResult* result = nil;
+	if(command.arguments.count == 0) {
+		NSString* msg_id = nil;
+	} else {
+		NSString* msg_id = [command.arguments objectAtIndex:0];
+	}
 	NSString* msg_id = [command.arguments objectAtIndex:0];
 	if(msg_id == nil) {
 		msg_id = @"";
@@ -71,7 +84,11 @@
 
 - (void) recv_nb:(CDVInvokedUrlCommand*)command {
 	CDVPluginResult* result = nil;
-	NSString* msg_id = [command.arguments objectAtIndex:0];
+	if(command.arguments.count == 0) {
+		NSString* msg_id = nil;
+	} else {
+		NSString* msg_id = [command.arguments objectAtIndex:0];
+	}
 	if(msg_id == nil) {
 		msg_id = @"";
 	}
