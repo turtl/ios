@@ -8,7 +8,7 @@ var TurtlCore = (function() {
 				function(err) {
 					reject(err);
 				},
-				'TurtlCore',
+				'TurtlCorePlugin',
 				action,
 				args
 			);
