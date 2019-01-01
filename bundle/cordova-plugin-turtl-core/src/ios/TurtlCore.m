@@ -58,10 +58,9 @@
 
 - (void) recv:(CDVInvokedUrlCommand*)command {
 	CDVPluginResult* result = nil;
-	if(command.arguments.count == 0) {
-		NSString* msg_id = nil;
-	} else {
-		NSString* msg_id = [command.arguments objectAtIndex:0];
+	NSString* msg_id = nil;
+	if(command.arguments.count > 0) {
+		msg_id = [command.arguments objectAtIndex:0];
 	}
 	NSString* msg_id = [command.arguments objectAtIndex:0];
 	if(msg_id == nil) {
@@ -84,10 +83,9 @@
 
 - (void) recv_nb:(CDVInvokedUrlCommand*)command {
 	CDVPluginResult* result = nil;
-	if(command.arguments.count == 0) {
-		NSString* msg_id = nil;
-	} else {
-		NSString* msg_id = [command.arguments objectAtIndex:0];
+	NSString* msg_id = nil;
+	if(command.arguments.count > 0) {
+		msg_id = [command.arguments objectAtIndex:0];
 	}
 	if(msg_id == nil) {
 		msg_id = @"";
