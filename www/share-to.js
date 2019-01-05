@@ -1,6 +1,8 @@
 document.addEventListener('deviceready', setup_share_to, false);
 
 function setup_share_to() {
+	// TODO: todo
+	return;
 	const init_fail = function(err) {
 		log.error('share_to::init() -- error: ', err);
 	};
