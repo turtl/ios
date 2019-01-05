@@ -1,7 +1,7 @@
 window.addEvent('domready', function() {
-	document.body.addEvent('click:relay(a[target="_blank"])', function(e) {
+	Composer.add_event(document.body, 'click', function(e) {
 		e.preventDefault();
 		window.open(this.url, '_system');
-	});
+	}, 'a[target="_blank"]');
 });
 
