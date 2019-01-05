@@ -13,4 +13,5 @@
     <plugin name="com.lyonbros.turtlcore" spec="bundle/cordova-plugin-turtl-core/" />
     <plugin name="cordova-plugin-file" spec="^6.0.1" />
     <engine name="ios" spec="4.5.5" />
+    <plugin name="cordova-plugin-inappbrowser" spec="https://github.com/apache/cordova-plugin-inappbrowser" />
 </widget>

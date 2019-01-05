@@ -10,6 +10,7 @@
     "cordova-ios": "^4.5.5",
     "cordova-plugin-backbutton": "^0.3.0",
     "cordova-plugin-file": "^6.0.1",
+    "cordova-plugin-inappbrowser": "git+https://github.com/apache/cordova-plugin-inappbrowser.git",
     "cordova-plugin-intent": "git+https://github.com/napolitano/cordova-plugin-intent.git",
     "cordova-plugin-turtl-core": "file:bundle\\cordova-plugin-turtl-core",
     "cordova-plugin-turtl-store": "file:bundle\\cordova-plugin-turtl-store",
@@ -22,7 +23,8 @@
     "plugins": {
       "cordova-plugin-whitelist": {},
       "cordova-plugin-file": {},
-      "com.lyonbros.turtlcore": {}
+      "com.lyonbros.turtlcore": {},
+      "cordova-plugin-inappbrowser": {}
     }
   },
   "devDependencies": {
