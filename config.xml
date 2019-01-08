@@ -2,19 +2,17 @@
 <widget android-versionCode="7250" id="com.lyonbros.turtl" version="0.7.2.5" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Turtl</name>
     <description>
-		A privacy-focused note-taking application.
+        A privacy-focused note-taking application.
     </description>
     <author email="andrew@turtlapp.com" href="https://turtlapp.com">
-		Andrew Lyon
+        Andrew Lyon
     </author>
     <content src="index.html" />
     <access origin="*" />
-	<preference name="FadeSplashScreenDuration" value="0" />
-	<preference name="SplashScreen" value="none" />
-	<preference name="ShowSplashScreenSpinner" value="false" />
-	<preference name="SplashScreenDelay" value="0" />
-	<platform name="ios">
-	</platform>
+    <platform name="ios">
+        <icon src="res/ios/icon-60@3x.png" width="180" height="180" />
+        <splash src="res/screen/ios/Default@2x~universal~anyany.png" />
+    </platform>
     <plugin name="cordova-plugin-whitelist" spec="1" />
     <plugin name="com.lyonbros.turtlcore" spec="bundle/cordova-plugin-turtl-core/" />
     <plugin name="cordova-plugin-file" spec="^6.0.1" />
