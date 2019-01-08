@@ -9,7 +9,11 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
-    <preference name="ShowSplashScreenSpinner" value="false" />
+	<preference name="FadeSplashScreenDuration" value="0" />
+	<preference name="SplashScreen" value="none" />
+	<preference name="ShowSplashScreenSpinner" value="false" />
+	<platform name="ios">
+	</platform>
     <plugin name="cordova-plugin-whitelist" spec="1" />
     <plugin name="com.lyonbros.turtlcore" spec="bundle/cordova-plugin-turtl-core/" />
     <plugin name="cordova-plugin-file" spec="^6.0.1" />
