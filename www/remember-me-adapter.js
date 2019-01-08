@@ -4,27 +4,18 @@ RememberMe.adapters.ios_keystore = Composer.Event.extend({
 
 	get_login: function() {
 		return new Promise(function(resolve, reject) {
-			Keychain.get(function(res) {
-				try {
-					if(!res) return null;
-					var decoded = JSON.parse(atob(res));
-					return {user_id: decoded.user_id, key: decoded.key};
-				} catch(e) {
-					reject(e);
-				}
-			}, reject, 'turtl-remember-me', 'Please login with TouchID');
-
-			// not sure WHY the keychain fn times out, but it does, so here we
-			// are...
-			setTimeout(resolve, 2000);
+			Keychain.get(resolve, reject, 'turtl-remember-me', 'Please login with TouchID');
+		}).then(function(res) {
+			if(!res) return null;
+			var decoded = JSON.parse(atob(res));
+			return {user_id: decoded.user_id, key: decoded.key};
 		});
 	},
 
 	save: function(user_id, key) {
-		const token = JSON.stringify({user_id: user_id, key: key});
-		const token_str = btoa(token);
+		const encoded = btoa(JSON.stringify({user_id: user_id, key: key}));
 		return new Promise(function(resolve, reject) {
-			Keychain.set(resolve, reject, 'turtl-remember-me', token_str, false);
+			Keychain.set(resolve, reject, 'turtl-remember-me', encoded, false);
 		});
 	},
 
