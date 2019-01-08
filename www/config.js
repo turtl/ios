@@ -2,14 +2,13 @@ if(typeof(config) == 'undefined') config = {};
 Object.merge(config, {
 	client: 'ios',
 	version: cordova_app_version,
-	cookie_login: false,
 	base_url: window.location.toString().replace(/\/(index\.html)?$/, '/app'),
 	core: {
 		adapter: 'mobile',
 		options: {},
 	},
 	remember_me: {
-		enabled: false,
+		enabled: true,
 		adapter: 'ios_keystore',
 		options: {},
 	},
