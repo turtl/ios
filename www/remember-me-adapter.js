@@ -5,11 +5,15 @@ RememberMe.adapters.ios_keystore = Composer.Event.extend({
 	get_login: function() {
 		return new Promise(function(resolve, reject) {
 			Keychain.get(function(res) {
-				if(!res) return null;
-				var token = JSON.parse(res).key;
-				if(!token) return null;
-				var decoded = JSON.parse(atob(token));
-				return {user_id: decoded.user_id, key: decoded.key};
+				try {
+					if(!res) return null;
+					var token = JSON.parse(res).key;
+					if(!token) return null;
+					var decoded = JSON.parse(atob(token));
+					return {user_id: decoded.user_id, key: decoded.key};
+				} catch(e) {
+					reject(e);
+				}
 			}, reject, 'turtl-remember-me', 'Please login with TouchID');
 		});
 	},
