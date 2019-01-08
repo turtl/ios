@@ -11,7 +11,7 @@
     <access origin="*" />
     <platform name="ios">
         <icon src="res/ios/icon-60@3x.png" width="180" height="180" />
-        <splash src="res/screen/ios/Default@2x~universal~anyany.png" />
+        <splash src="res/ios/Default@2x~universal~anyany.png" />
     </platform>
     <plugin name="cordova-plugin-whitelist" spec="1" />
     <plugin name="com.lyonbros.turtlcore" spec="bundle/cordova-plugin-turtl-core/" />
