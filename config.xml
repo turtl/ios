@@ -10,7 +10,7 @@
     <content src="index.html" />
     <access origin="*" />
     <platform name="ios">
-        <icon src="res/ios/icon-60@3x.png" width="180" height="180" />
+        <icon height="180" src="res/ios/icon-60@3x.png" width="180" />
         <splash src="res/ios/Default@2x~universal~anyany.png" />
     </platform>
     <plugin name="cordova-plugin-whitelist" spec="1" />
@@ -18,4 +18,5 @@
     <plugin name="cordova-plugin-file" spec="^6.0.1" />
     <engine name="ios" spec="4.5.5" />
     <plugin name="cordova-plugin-inappbrowser" spec="https://github.com/apache/cordova-plugin-inappbrowser" />
+    <plugin name="cordova-plugin-ios-keychain" spec="https://github.com/ionic-team/cordova-plugin-ios-keychain" />
 </widget>
