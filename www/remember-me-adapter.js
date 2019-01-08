@@ -13,6 +13,10 @@ RememberMe.adapters.ios_keystore = Composer.Event.extend({
 					reject(e);
 				}
 			}, reject, 'turtl-remember-me', 'Please login with TouchID');
+
+			// not sure WHY the keychain fn times out, but it does, so here we
+			// are...
+			setTimeout(resolve, 2000);
 		});
 	},
 
