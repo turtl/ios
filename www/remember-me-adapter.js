@@ -7,9 +7,7 @@ RememberMe.adapters.ios_keystore = Composer.Event.extend({
 			Keychain.get(function(res) {
 				try {
 					if(!res) return null;
-					var token = JSON.parse(res).key;
-					if(!token) return null;
-					var decoded = JSON.parse(atob(token));
+					var decoded = JSON.parse(atob(res));
 					return {user_id: decoded.user_id, key: decoded.key};
 				} catch(e) {
 					reject(e);
