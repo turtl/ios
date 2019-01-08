@@ -12,6 +12,7 @@
 	<preference name="FadeSplashScreenDuration" value="0" />
 	<preference name="SplashScreen" value="none" />
 	<preference name="ShowSplashScreenSpinner" value="false" />
+	<preference name="SplashScreenDelay" value="0" />
 	<platform name="ios">
 	</platform>
     <plugin name="cordova-plugin-whitelist" spec="1" />
